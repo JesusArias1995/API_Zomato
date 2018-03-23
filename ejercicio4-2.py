@@ -10,9 +10,9 @@ h={"Accept":"application/json", "user-key":key}
 r=requests.get("https://developers.zomato.com/api/v2.1/locations", params=p, headers=h)
 
 if r.status_code == 200:
-        do=r.json()
-        for i in do["location_suggestions"]:
-                codigo=i["entity_id"]
+	do=r.json()
+	for i in do["location_suggestions"]:
+		codigo=i["entity_id"]
 print ("")
 
 print("ORDENAR POR CRITERIO")
@@ -20,9 +20,16 @@ print("1. Costo")
 print("2. Clasificación")
 print("3. Recientemente agregado")
 opcion=input("Elige el numero de opcion que desea realizar: ")
+
+while not (opcion=="1" or opcion=="2" or opcion=="3"):
+	opcion=input("Introduzca correctamente el numero de opcion: ")
+
 print("1. Ascendente")
 print("2. Descendente")
 ord=input("Elige el numero de ordenacion que desea filtrar: ")
+
+while not (ord=="1" or ord=="2"):
+	ord=input("Introduzca correctamente el numero de opcion: ")
 
 if opcion=="1":
 	sort="cost"
